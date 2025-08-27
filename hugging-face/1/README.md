@@ -1,7 +1,7 @@
 ```bash
 python3 -m venv venv
 source venv/bin/activate
-pip install requests python-dotenv
+pip install python-dotenv huggingface_hub
 
 python app.py
 ```
