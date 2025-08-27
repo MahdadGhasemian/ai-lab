@@ -46,4 +46,4 @@ Thumbs.db
 # dotenv
 .env
 
-./test/
+test/
