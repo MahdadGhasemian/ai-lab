@@ -24,4 +24,3 @@ sudo apt install pipx
 pipx install "huggingface_hub[cli]"
 hf --help
 ```
-
