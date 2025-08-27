@@ -14,3 +14,13 @@ pip install numpy scikit-learn
 
 python app.py
 ```
+
+## Hugging Face
+
+CLI install
+
+```bash
+sudo apt install pipx
+pipx install "huggingface_hub[cli]"
+hf --help
+```
