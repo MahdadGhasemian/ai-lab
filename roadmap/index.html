@@ -92,13 +92,21 @@
                   class="text-gray-600 hover:text-gray-800 inline-flex items-center">
                   <i class="fab fa-github mr-1"></i> GitHub
                 </a>
+                <template v-if="item.youtubeVideos && item.youtubeVideos.length > 0">
+                  <a v-for="(video, index) in item.youtubeVideos" :key="index" :href="video" target="_blank"
+                    class="text-red-600 hover:text-red-800 inline-flex items-center mr-4">
+                    <i class="fab fa-youtube mr-1"></i> Watch {{
+                    item.youtubeVideos.length > 1 ? index + 1 : '' }}
+                  </a>
+                </template>
                 <a v-if="item.youtube" :href="item.youtube" target="_blank"
                   class="text-red-600 hover:text-red-800 inline-flex items-center">
                   <i class="fab fa-youtube mr-1"></i> Watch
                 </a>
                 <a v-if="item.link" :href="item.link" target="_blank"
                   class="text-blue-600 hover:text-blue-800 inline-flex items-center">
-                  <i class="fas fa-external-link-alt mr-1"></i> {{ item.linkName || 'Visit' }}
+                  <i class="fas fa-external-link-alt mr-1"></i> {{
+                  item.linkName || 'Visit' }}
                 </a>
               </div>
             </div>
@@ -190,6 +198,7 @@
                   "Spaces",
                   "Colab Notebooks",
                   "Gradio",
+                  "Jupyter",
                 ],
                 link: "https://huggingface.co/spaces/mahdad-ghasemian/mahdad",
                 linkName: "Space",
@@ -207,6 +216,11 @@
                 description:
                   "Mastering TensorFlow for building and training neural networks",
                 tags: ["TensorFlow", "Keras", "Neural Networks"],
+                link: "https://www.tensorflow.org/tutorials",
+                youtubeVideos: [
+                  "https://www.youtube.com/watch?v=KNAWp2S3w94&list=PLQY2H8rRoyvwWuPiWnuTDBHe7I0fMSsfO",
+                  "https://www.youtube.com/watch?v=gWvwu7qLjJs",
+                ],
               },
               {
                 title: "MLOps via Databricks",
