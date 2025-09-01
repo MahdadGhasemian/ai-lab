@@ -1,360 +1,327 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Personal AI Roadmap</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-    />
-    <style>
-      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-      body {
-        font-family: "Inter", sans-serif;
-        background-color: #f8fafc;
-      }
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal AI Roadmap</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
 
-      .roadmap-item {
-        position: relative;
-        padding-left: 2rem;
-        margin-bottom: 2rem;
-        border-left: 2px solid #e2e8f0;
-      }
+    body {
+      font-family: "Inter", sans-serif;
+      background-color: #f8fafc;
+    }
 
-      .roadmap-item:before {
-        content: "";
-        position: absolute;
-        left: -0.5rem;
-        top: 0.5rem;
-        width: 1rem;
-        height: 1rem;
-        border-radius: 50%;
-        background: #3b82f6;
-      }
+    .roadmap-item {
+      position: relative;
+      padding-left: 2rem;
+      margin-bottom: 2rem;
+      border-left: 2px solid #e2e8f0;
+    }
 
-      .level-badge {
-        padding: 0.25rem 0.75rem;
-        border-radius: 9999px;
-        font-size: 0.875rem;
-        font-weight: 500;
-      }
+    .roadmap-item:before {
+      content: "";
+      position: absolute;
+      left: -0.5rem;
+      top: 0.5rem;
+      width: 1rem;
+      height: 1rem;
+      border-radius: 50%;
+      background: #3b82f6;
+    }
 
-      .topic-tag {
-        font-size: 0.75rem;
-        background-color: #f3f4f6;
-        padding: 0.25rem 0.5rem;
-        border-radius: 0.25rem;
-      }
+    .level-badge {
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
 
-      [v-cloak] {
-        display: none !important;
-      }
-    </style>
-  </head>
+    .topic-tag {
+      font-size: 0.75rem;
+      background-color: #f3f4f6;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
 
-  <body class="p-4 md:p-8 max-w-5xl mx-auto">
-    <div id="app" v-cloak>
-      <header class="text-center mb-12">
-        <h1
-          class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-        >
-          {{ title }}
-        </h1>
-        <p class="text-gray-600 max-w-2xl mx-auto">{{ subtitle }}</p>
-      </header>
+    [v-cloak] {
+      display: none !important;
+    }
+  </style>
+</head>
 
-      <div class="space-y-12">
-        <div
-          v-for="(level, index) in roadmap"
-          :key="index"
-          class="bg-white rounded-xl shadow-md overflow-hidden"
-        >
-          <div class="p-6">
-            <div class="flex items-center mb-4">
-              <span
-                :class="`level-badge ${level.badgeColor} ${level.textColor}`"
-              >
-                {{ level.title }}
-              </span>
-            </div>
-            <h2 class="text-2xl font-bold text-gray-800 mb-4">
-              {{ level.subtitle }}
-            </h2>
+<body class="p-4 md:p-8 max-w-5xl mx-auto">
+  <div id="app" v-cloak>
+    <header class="text-center mb-12">
+      <h1
+        class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+        {{ title }}
+      </h1>
+      <p class="text-gray-600 max-w-2xl mx-auto">{{ subtitle }}</p>
+    </header>
 
-            <div class="space-y-6">
-              <div
-                v-for="(item, itemIndex) in level.items"
-                :key="itemIndex"
-                class="roadmap-item"
-              >
-                <h3 class="text-lg font-semibold text-gray-800">
-                  {{ item.title }}
-                </h3>
-                <p class="text-gray-600">{{ item.description }}</p>
-                <p
-                  v-if="item.subtitle"
-                  class="text-sm text-green-700 my-2"
-                  v-html="item.subtitle"
-                ></p>
-                <div class="mt-2 flex flex-wrap gap-2">
-                  <span
-                    v-for="(tag, tagIndex) in item.tags"
-                    :key="tagIndex"
-                    class="topic-tag"
-                  >
-                    {{ tag }}
-                  </span>
-                </div>
-                <div class="mt-2 space-x-4">
-                  <a
-                    v-if="item.github"
-                    :href="item.github"
-                    target="_blank"
-                    class="text-gray-600 hover:text-gray-800 inline-flex items-center"
-                  >
-                    <i class="fab fa-github mr-1"></i> GitHub
+    <div class="space-y-12">
+      <div v-for="(level, index) in roadmap" :key="index" class="bg-white rounded-xl shadow-md overflow-hidden">
+        <div class="p-6">
+          <div class="flex items-center mb-4">
+            <span :class="`level-badge ${level.badgeColor} ${level.textColor}`">
+              {{ level.title }}
+            </span>
+          </div>
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">
+            {{ level.subtitle }}
+          </h2>
+
+          <div class="space-y-6">
+            <div v-for="(item, itemIndex) in level.items" :key="itemIndex" class="roadmap-item">
+              <h3 class="text-lg font-semibold text-gray-800">
+                {{ item.title }}
+              </h3>
+              <p class="text-gray-600">{{ item.description }}</p>
+              <p v-if="item.subtitle" class="text-sm text-green-700 my-2" v-html="item.subtitle"></p>
+              <div class="mt-2 flex flex-wrap gap-2">
+                <span v-for="(tag, tagIndex) in item.tags" :key="tagIndex" class="topic-tag">
+                  {{ tag }}
+                </span>
+              </div>
+              <div class="mt-2 space-x-4">
+                <a v-if="item.github" :href="item.github" target="_blank"
+                  class="text-gray-600 hover:text-gray-800 inline-flex items-center">
+                  <i class="fab fa-github mr-1"></i> GitHub
+                </a>
+                <template v-if="item.youtubeVideos && item.youtubeVideos.length > 0">
+                  <a v-for="(video, index) in item.youtubeVideos" :key="index" :href="video" target="_blank"
+                    class="text-red-600 hover:text-red-800 inline-flex items-center mr-4">
+                    <i class="fab fa-youtube mr-1"></i> Watch {{
+                    item.youtubeVideos.length > 1 ? index + 1 : '' }}
                   </a>
-                  <template
-                    v-if="item.youtubeVideos && item.youtubeVideos.length > 0"
-                  >
-                    <a
-                      v-for="(video, index) in item.youtubeVideos"
-                      :key="index"
-                      :href="video"
-                      target="_blank"
-                      class="text-red-600 hover:text-red-800 inline-flex items-center mr-4"
-                    >
-                      <i class="fab fa-youtube mr-1"></i> Watch {{
-                      item.youtubeVideos.length > 1 ? index + 1 : '' }}
-                    </a>
-                  </template>
-                  <a
-                    v-if="item.youtube"
-                    :href="item.youtube"
-                    target="_blank"
-                    class="text-red-600 hover:text-red-800 inline-flex items-center"
-                  >
-                    <i class="fab fa-youtube mr-1"></i> Watch
-                  </a>
-                  <a
-                    v-if="item.link"
-                    :href="item.link"
-                    target="_blank"
-                    class="text-blue-600 hover:text-blue-800 inline-flex items-center"
-                  >
+                </template>
+                <a v-if="item.youtube" :href="item.youtube" target="_blank"
+                  class="text-red-600 hover:text-red-800 inline-flex items-center">
+                  <i class="fab fa-youtube mr-1"></i> Watch
+                </a>
+                <a v-if="item.link" :href="item.link" target="_blank"
+                  class="text-blue-600 hover:text-blue-800 inline-flex items-center">
+                  <i class="fas fa-external-link-alt mr-1"></i> {{
+                  item.linkName || 'Visit' }}
+                </a>
+                <template v-if="item.links && item.links.length">
+                  <a v-for="(link, index) in item.links" :key="index" :href="link.link" target="_blank"
+                    class="text-blue-600 hover:text-blue-800 inline-flex items-center">
                     <i class="fas fa-external-link-alt mr-1"></i> {{
-                    item.linkName || 'Visit' }}
+                    link.name || 'Visit' }}
                   </a>
-                  <template v-if="item.links && item.links.length">
-                    <a
-                      v-for="(link, index) in item.links"
-                      :key="index"
-                      :href="link.link"
-                      target="_blank"
-                      class="text-blue-600 hover:text-blue-800 inline-flex items-center"
-                    >
-                      <i class="fas fa-external-link-alt mr-1"></i> {{
-                      link.name || 'Visit' }}
-                    </a>
-                  </template>
-                </div>
+                </template>
               </div>
             </div>
           </div>
         </div>
       </div>
-
-      <footer class="mt-16 text-center text-gray-500 text-sm">
-        <p>{{ footerText }}</p>
-        <p class="mt-2">Last updated: {{ lastUpdated }}</p>
-      </footer>
     </div>
 
-    <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
-    <script>
-      const { createApp, ref } = Vue;
+    <footer class="mt-16 text-center text-gray-500 text-sm">
+      <p>{{ footerText }}</p>
+      <p class="mt-2">Last updated: {{ lastUpdated }}</p>
+    </footer>
+  </div>
 
-      createApp({
-        setup() {
-          const title = "My AI Learning Journey";
-          const subtitle =
-            "Tracking my progress in AI/ML development and next learning steps";
-          const footerText =
-            "Continuously evolving roadmap based on my learning journey";
-          const lastUpdated = "August 2025";
+  <script src="https://unpkg.com/vue@3.2.31/dist/vue.global.js"></script>
+  <script>
+    const { createApp, ref } = Vue;
 
-          const roadmap = [
-            {
-              title: "✅ Completed",
-              // subtitle: 'What I\'ve already accomplished',
-              badgeColor: "bg-green-100",
-              textColor: "text-green-800",
-              items: [
-                {
-                  title:
-                    "MCP Concepts (Model Context Protocol - Server & Client)",
-                  description: "Learned about MCP server and client concepts",
-                  tags: [
-                    "MCP",
-                    "MCP Server",
-                    "MCP Client",
-                    "ANTHROPIC",
-                    "OLLAMA",
-                    "GEMINI",
-                    "Typescript",
-                  ],
-                  github:
-                    "https://github.com/MahdadGhasemian/mcp-typescript-example",
-                },
-                {
-                  title: "MCP Server Development",
-                  description: "Built a Hetzner server management tool with Go",
-                  tags: [
-                    "MCP",
-                    "MCP Client",
-                    "Anthropic API",
-                    "Hetzner Hcloud API",
-                    "Go",
-                    "REST API",
-                  ],
-                  github: "https://github.com/mahdadghasemian/mcp-hetzner-go",
-                  subtitle:
-                    '🎉 <strong>Now part of the official <a href="https://github.com/hetznercloud/awesome-hcloud" class="text-blue-600 hover:underline" target="_blank">Awesome HCloud</a> list!</strong>',
-                },
-                {
-                  title: "LLM Exploration",
-                  description: "Experimented with local LLM models (Llama)",
-                  tags: ["LLMs", "Local Deployment"],
-                },
-                {
-                  title: "Python Programming",
-                  description: "Completed a comprehensive Python course",
-                  tags: ["Python", "OOP", "Data Structures"],
-                },
-                {
-                  title: "NVIDIA Build",
-                  description:
-                    "Exploring NVIDIA's developer platform and tools",
-                  tags: ["NVIDIA", "GPU Computing", "AI Development"],
-                  link: "https://build.nvidia.com/",
-                },
-                {
-                  title: "LLM Integration",
-                  description: "Working with Hugging Face models",
-                  tags: [
-                    "Hugging Face",
-                    "Transformers",
-                    "Spaces",
-                    "Colab Notebooks",
-                    "Gradio",
-                    "Jupyter",
-                  ],
-                  link: "https://huggingface.co/spaces/mahdad-ghasemian/mahdad",
-                  linkName: "Space",
-                },
-              ],
-            },
-            {
-              title: "🔧 In Progress",
-              // subtitle: 'Currently working on',
-              badgeColor: "bg-blue-100",
-              textColor: "text-blue-800",
-              items: [
-                {
-                  title: "Deep Learning with TensorFlow",
-                  description:
-                    "Mastering TensorFlow for building and training neural networks",
-                  tags: ["TensorFlow", "Keras", "Neural Networks"],
-                  links: [
-                    {
-                      name: "TensorFlow Documentation",
-                      link: "https://www.tensorflow.org/tutorials",
-                    },
-                    {
-                      name: "Playground",
-                      link: "https://playground.tensorflow.org/",
-                    },
-                  ],
-                  youtubeVideos: [
-                    "https://www.youtube.com/watch?v=KNAWp2S3w94&list=PLQY2H8rRoyvwWuPiWnuTDBHe7I0fMSsfO",
-                    "https://www.youtube.com/watch?v=gWvwu7qLjJs",
-                  ],
-                },
-                {
-                  title: "MLOps via Databricks",
-                  description:
-                    "Learning production ML workflows and MLOps practices",
-                  tags: ["MLOps", "Databricks", "ML Workflow"],
-                  youtube: "https://youtu.be/gqrl4QpfHzo?si=bL5SsE3_4OVFYniV",
-                },
-              ],
-            },
-            {
-              title: "⏭️ Next Steps",
-              // subtitle: 'Planned learning path',
-              badgeColor: "bg-purple-100",
-              textColor: "text-purple-800",
-              items: [
-                {
-                  title: "Deep Learning with PyTorch",
-                  description:
-                    "Learning PyTorch for dynamic neural networks and research",
-                  tags: ["PyTorch", "Dynamic Graphs", "Research"],
-                },
-                {
-                  title: "Advanced ML Engineering",
-                  description: "Production-grade ML development",
-                  tags: ["MLOps", "Databricks", "Model Serving"],
-                },
-                {
-                  title: "LLM Application Development",
-                  description: "Building applications with LangChain and LLMs",
-                  tags: ["LangChain", "LLM Apps", "Agents"],
-                },
-                {
-                  title: "ML System Design",
-                  description: "Designing scalable ML systems",
-                  tags: ["System Design", "Scalability", "Deployment"],
-                },
-              ],
-            },
-            {
-              title: "Advanced Topics",
-              // subtitle: 'Specialized AI domains to explore',
-              badgeColor: "bg-yellow-100",
-              textColor: "text-yellow-800",
-              items: [
-                {
-                  title: "Computer Vision",
-                  description: "Image processing and understanding",
-                  tags: ["CNNs", "Object Detection", "Image Segmentation"],
-                },
-                {
-                  title: "Reinforcement Learning",
-                  description: "Learning from interactions",
-                  tags: ["Q-Learning", "Deep RL", "Applications"],
-                },
-                {
-                  title: "Generative Models",
-                  description: "Creating new content with AI",
-                  tags: ["GANs", "VAEs", "Diffusion Models"],
-                },
-              ],
-            },
-          ];
+    createApp({
+      setup() {
+        const title = "My AI Learning Journey";
+        const subtitle =
+          "Tracking my progress in AI/ML development and next learning steps";
+        const footerText =
+          "Continuously evolving roadmap based on my learning journey";
+        const lastUpdated = "August 2025";
 
-          return {
-            title,
-            subtitle,
-            roadmap,
-            footerText,
-            lastUpdated,
-          };
-        },
-      }).mount("#app");
-    </script>
-  </body>
+        const roadmap = [
+          {
+            title: "✅ Completed",
+            // subtitle: 'What I\'ve already accomplished',
+            badgeColor: "bg-green-100",
+            textColor: "text-green-800",
+            items: [
+              {
+                title:
+                  "MCP Concepts (Model Context Protocol - Server & Client)",
+                description: "Learned about MCP server and client concepts",
+                tags: [
+                  "MCP",
+                  "MCP Server",
+                  "MCP Client",
+                  "ANTHROPIC",
+                  "OLLAMA",
+                  "GEMINI",
+                  "Typescript",
+                ],
+                github:
+                  "https://github.com/MahdadGhasemian/mcp-typescript-example",
+              },
+              {
+                title: "MCP Server Development",
+                description: "Built a Hetzner server management tool with Go",
+                tags: [
+                  "MCP",
+                  "MCP Client",
+                  "Anthropic API",
+                  "Hetzner Hcloud API",
+                  "Go",
+                  "REST API",
+                ],
+                github: "https://github.com/mahdadghasemian/mcp-hetzner-go",
+                subtitle:
+                  '🎉 <strong>Now part of the official <a href="https://github.com/hetznercloud/awesome-hcloud" class="text-blue-600 hover:underline" target="_blank">Awesome HCloud</a> list!</strong>',
+              },
+              {
+                title: "LLM Exploration",
+                description: "Experimented with local LLM models (Llama)",
+                tags: ["LLMs", "Local Deployment"],
+              },
+              {
+                title: "Python Programming",
+                description: "Completed a comprehensive Python course",
+                tags: ["Python", "OOP", "Data Structures"],
+              },
+              {
+                title: "NVIDIA Build",
+                description:
+                  "Exploring NVIDIA's developer platform and tools",
+                tags: ["NVIDIA", "GPU Computing", "AI Development"],
+                link: "https://build.nvidia.com/",
+              },
+              {
+                title: "LLM Integration",
+                description: "Working with Hugging Face models",
+                tags: [
+                  "Hugging Face",
+                  "Transformers",
+                  "Spaces",
+                  "Colab Notebooks",
+                  "Gradio",
+                  "Jupyter",
+                ],
+                link: "https://huggingface.co/spaces/mahdad-ghasemian/mahdad",
+                linkName: "Space",
+              },
+            ],
+          },
+          {
+            title: "🔧 In Progress",
+            // subtitle: 'Currently working on',
+            badgeColor: "bg-blue-100",
+            textColor: "text-blue-800",
+            items: [
+              {
+                title: "Deep Learning with TensorFlow",
+                description:
+                  "Mastering TensorFlow for building and training neural networks",
+                tags: ["TensorFlow", "Keras", "Neural Networks"],
+                links: [
+                  {
+                    name: "TensorFlow Documentation",
+                    link: "https://www.tensorflow.org/tutorials",
+                  },
+                  {
+                    name: "Playground",
+                    link: "https://playground.tensorflow.org/",
+                  },
+                ],
+                youtubeVideos: [
+                  "https://www.youtube.com/watch?v=KNAWp2S3w94&list=PLQY2H8rRoyvwWuPiWnuTDBHe7I0fMSsfO",
+                  "https://www.youtube.com/watch?v=gWvwu7qLjJs",
+                ],
+              },
+              {
+                title: "MLOps via Databricks",
+                description:
+                  "Learning production ML workflows and MLOps practices",
+                tags: ["MLOps", "Databricks", "ML Workflow"],
+                youtube: "https://youtu.be/gqrl4QpfHzo?si=bL5SsE3_4OVFYniV",
+              },
+              {
+                title: "Django Web Development",
+                description: "Building robust web applications with Django and Django REST framework",
+                tags: ["Python", "Django", "Web Development", "REST APIs"],
+                links: [
+                  {
+                    name: "Python Django - The Practical Guid",
+                    link: "https://www.udemy.com/course/python-django-the-practical-guide/",
+                  }
+                ]
+              },
+            ],
+          },
+          {
+            title: "⏭️ Next Steps",
+            // subtitle: 'Planned learning path',
+            badgeColor: "bg-purple-100",
+            textColor: "text-purple-800",
+            items: [
+              {
+                title: "Deep Learning with PyTorch",
+                description:
+                  "Learning PyTorch for dynamic neural networks and research",
+                tags: ["PyTorch", "Dynamic Graphs", "Research"],
+              },
+              {
+                title: "Advanced ML Engineering",
+                description: "Production-grade ML development",
+                tags: ["MLOps", "Databricks", "Model Serving"],
+              },
+              {
+                title: "LLM Application Development",
+                description: "Building applications with LangChain and LLMs",
+                tags: ["LangChain", "LLM Apps", "Agents"],
+              },
+              {
+                title: "ML System Design",
+                description: "Designing scalable ML systems",
+                tags: ["System Design", "Scalability", "Deployment"],
+              },
+            ],
+          },
+          {
+            title: "Advanced Topics",
+            // subtitle: 'Specialized AI domains to explore',
+            badgeColor: "bg-yellow-100",
+            textColor: "text-yellow-800",
+            items: [
+              {
+                title: "Computer Vision",
+                description: "Image processing and understanding",
+                tags: ["CNNs", "Object Detection", "Image Segmentation"],
+              },
+              {
+                title: "Reinforcement Learning",
+                description: "Learning from interactions",
+                tags: ["Q-Learning", "Deep RL", "Applications"],
+              },
+              {
+                title: "Generative Models",
+                description: "Creating new content with AI",
+                tags: ["GANs", "VAEs", "Diffusion Models"],
+              },
+            ],
+          },
+        ];
+
+        return {
+          title,
+          subtitle,
+          roadmap,
+          footerText,
+          lastUpdated,
+        };
+      },
+    }).mount("#app");
+  </script>
+</body>
+
 </html>
