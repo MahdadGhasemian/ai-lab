@@ -24,3 +24,7 @@ sudo apt install pipx
 pipx install "huggingface_hub[cli]"
 hf --help
 ```
+
+## Tensorflow Deep Learning
+
+./tensorflow-deep-learning
