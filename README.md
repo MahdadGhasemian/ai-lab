@@ -29,4 +29,4 @@ hf --help
 
 ./tensorflow-deep-learning
 
-### Continue Point : 7 -> 12
+### Continue Point : 7 -> 21
